@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuneUp - The Professional Network for Musicians</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #0a0a0a;
+            background: #fafafa;
+            min-height: 100vh;
+            font-weight: 400;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 700px;
+        }
+        
+        .logo {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: #0a0a0a;
+            letter-spacing: -2px;
+        }
+        
+        .tagline {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #666;
+            font-weight: 300;
+        }
+        
+        .hero-description {
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            color: #333;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+        
+        .problem-statement {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 3rem;
+            text-align: left;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        
+        .problem-statement h3 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            font-weight: 500;
+            color: #0a0a0a;
+        }
+        
+        .problem-statement p {
+            color: #666;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+        
+        .coming-soon {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 48px 40px;
+            margin-bottom: 4rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        
+        .coming-soon h2 {
+            font-size: 1.375rem;
+            margin-bottom: 12px;
+            font-weight: 400;
+            color: #0a0a0a;
+        }
+        
+        .coming-soon p {
+            color: #666;
+            margin-bottom: 32px;
+            font-weight: 300;
+        }
+        
+        .waitlist-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-section {
+            margin-bottom: 32px;
+            padding: 24px;
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        
+        .form-section h3 {
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #0a0a0a;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 400;
+            color: #0a0a0a;
+            font-size: 0.875rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            background: #fafafa;
+            transition: all 0.2s ease;
+            font-weight: 300;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #0a0a0a;
+            background: #fff;
+        }
+        
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        .form-group select {
+            cursor: pointer;
+        }
+        
+        .form-cta {
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .form-description {
+            font-size: 1.125rem;
+            color: #666;
+            margin-bottom: 24px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+        
+        .form-note {
+            font-size: 0.875rem;
+            color: #999;
+            margin-top: 12px;
+            font-weight: 300;
+        }
+        
+        .email-signup {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .email-input {
+            flex: 1;
+            padding: 14px 16px;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            background: #fafafa;
+            transition: all 0.2s ease;
+            font-weight: 300;
+        }
+        
+        .email-input:focus {
+            border-color: #0a0a0a;
+            background: #fff;
+        }
+        
+        .notify-btn {
+            background: #0a0a0a;
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        
+        .notify-btn:hover {
+            background: #333;
+        }
+        
+        .features-section {
+            padding: 80px 0;
+            margin-bottom: 5rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: left;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        
+        .feature-card:hover {
+            border-color: #0a0a0a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            color: #0a0a0a;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            font-weight: 500;
+            color: #0a0a0a;
+        }
+        
+        .feature-card p {
+            color: #666;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+        
+
+        
+        .triangle-exchange {
+            margin-bottom: 5rem;
+            padding: 80px 0;
+            border-top: 1px solid #e5e5e5;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .triangle-container {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+            height: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .node {
+            position: absolute;
+            z-index: 10;
+        }
+        
+        .organizations {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .musicians-left {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transform: translateX(-50%);
+        }
+        
+        .musicians-right {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            transform: translateX(50%);
+        }
+        
+        .bottom-nodes {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .node-circle {
+            background: #fff;
+            border: 3px solid #e5e5e5;
+            border-radius: 20px;
+            padding: 40px 48px;
+            text-align: center;
+            min-width: 280px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+        
+        .node-circle:hover {
+            border-color: #0a0a0a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        
+        .node-circle h3 {
+            font-size: 1.75rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #0a0a0a;
+        }
+        
+        .node-circle p {
+            font-size: 1.25rem;
+            color: #666;
+            font-weight: 300;
+            margin: 0;
+        }
+        
+        .center-hub {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 15;
+        }
+        
+        .hub-circle {
+            background: linear-gradient(135deg, #0a0a0a, #333);
+            border-radius: 50%;
+            width: 240px;
+            height: 240px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+        }
+        
+        .logo-center {
+            font-size: 2.25rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+        
+        .hub-subtitle {
+            font-size: 1.125rem;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+        
+
+        
+        .triangle-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .connection-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+        }
+        
+        .flow-indicator {
+            position: absolute;
+            background: rgba(10,10,10,0.85);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 20px;
+            font-size: 1.125rem;
+            font-weight: 500;
+            z-index: 12;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .flow-1 {
+            top: 40%;
+            left: -20%;
+        }
+        
+        .flow-2 {
+            top: 40%;
+            right: -20%;
+        }
+        
+        .flow-3 {
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .detailed-benefits {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-top: 60px;
+        }
+        
+        .benefit-section {
+            text-align: center;
+        }
+        
+        .benefit-section h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #0a0a0a;
+        }
+        
+        .detailed-list {
+            list-style: none;
+            text-align: left;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        
+        .detailed-list li {
+            padding: 8px 0;
+            color: #666;
+            font-weight: 300;
+            position: relative;
+            padding-left: 20px;
+            line-height: 1.5;
+        }
+        
+        .detailed-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #0a0a0a;
+            font-weight: 600;
+        }
+        
+        .value-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .exchange-symbol {
+            font-size: 2rem;
+            color: #0a0a0a;
+            font-weight: 300;
+        }
+        
+        .value-indicator span {
+            font-size: 0.875rem;
+            color: #666;
+            font-weight: 300;
+        }
+        
+        .feature {
+            text-align: left;
+            padding: 0;
+        }
+        
+        .feature h3 {
+            font-size: 1.125rem;
+            margin-bottom: 8px;
+            font-weight: 400;
+            color: #0a0a0a;
+        }
+        
+        .feature p {
+            color: #666;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        .contact-section {
+            text-align: center;
+            padding: 48px 0;
+            border-top: 1px solid #e5e5e5;
+        }
+        
+        .contact-link {
+            color: #666;
+            text-decoration: none;
+            font-weight: 300;
+            transition: color 0.2s ease;
+        }
+        
+        .contact-link:hover {
+            color: #0a0a0a;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 3rem;
+            color: #0a0a0a;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            
+            .problem-statement {
+                padding: 20px;
+                margin-bottom: 2rem;
+            }
+            
+            .problem-statement h3 {
+                font-size: 1.125rem;
+            }
+            
+            .coming-soon {
+                padding: 24px 20px;
+                margin-bottom: 3rem;
+            }
+            
+            .coming-soon h2 {
+                font-size: 1.25rem;
+            }
+            
+            .form-description {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            
+            .notify-btn {
+                padding: 16px 24px;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .form-note {
+                font-size: 0.75rem;
+            }
+            
+            /* Triangle diagram mobile optimization */
+            .triangle-container {
+                height: 600px;
+                transform: scale(0.6);
+                margin: 2rem 0;
+            }
+            
+            .musicians-left {
+                transform: translateX(-50%) scale(0.6);
+            }
+            
+            .musicians-right {
+                transform: translateX(50%) scale(0.6);
+            }
+            
+            .hub-circle {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .logo-center {
+                font-size: 1rem;
+            }
+            
+            .hub-subtitle {
+                font-size: 0.75rem;
+            }
+            
+            .node-circle {
+                min-width: 120px;
+                padding: 16px 20px;
+            }
+            
+            .node-circle h3 {
+                font-size: 1.25rem;
+            }
+            
+            .node-circle p {
+                font-size: 1rem;
+            }
+            
+            .flow-indicator {
+                font-size: 0.625rem;
+                padding: 4px 8px;
+            }
+            
+            .detailed-benefits {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                text-align: center;
+                margin-top: 40px;
+            }
+            
+            .value-indicator {
+                order: 3;
+            }
+            
+            .detailed-list {
+                text-align: center;
+                max-width: 100%;
+            }
+            
+            .detailed-list li {
+                padding-left: 0;
+                text-align: center;
+            }
+            
+            .detailed-list li:before {
+                display: none;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                margin-top: 2rem;
+            }
+            
+            .feature-card {
+                padding: 24px;
+            }
+            
+            .section-title {
+                font-size: 1.375rem;
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .hero-description {
+                font-size: 0.875rem;
+            }
+            
+            .problem-statement {
+                padding: 16px;
+            }
+            
+            .coming-soon {
+                padding: 20px 16px;
+            }
+            
+            .triangle-container {
+                height: 500px;
+                transform: scale(0.5);
+            }
+            
+            .musicians-left {
+                transform: translateX(-50%) scale(0.5);
+            }
+            
+            .musicians-right {
+                transform: translateX(50%) scale(0.5);
+            }
+            
+            .hub-circle {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .logo-center {
+                font-size: 0.875rem;
+            }
+            
+            .hub-subtitle {
+                font-size: 0.625rem;
+            }
+            
+            .node-circle {
+                min-width: 100px;
+                padding: 12px 16px;
+            }
+            
+            .node-circle h3 {
+                font-size: 1rem;
+            }
+            
+            .node-circle p {
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="logo">TuneUp</h1>
+                <p class="tagline">Verified credibility social network for musicians</p>
+                <p class="hero-description">
+                    Break through the "who you know" barrier. TuneUp creates verified credibility that opens doors for talented musicians through organizational endorsements and peer verification.
+                </p>
+                
+                <div class="problem-statement">
+                    <h3>The Music Industry Problem</h3>
+                    <p>The music industry relies on word-of-mouth, creating a fragmented and inefficient system where musicians get locked out without connections. LinkedIn is too corporate, Instagram focuses on followers, not credibility. TuneUp creates verified credibility through organizational endorsements and peer verification to open doors based on credibility and talent (not just who you know).</p>
+                </div>
+                
+                <div class="coming-soon">
+                    <h2><span class="status-indicator"></span>Get Early Access</h2>
+                    <p>Join the first wave of musicians on TuneUp. Help shape the future of musician networking.</p>
+                    
+                    <div class="form-cta">
+                        <p class="form-description">We're creating TuneUp to connect music throughout the world.</p>
+                        <a href="https://forms.gle/KpNXd74tq92LbbgQ7" target="_blank" class="notify-btn" style="text-decoration: none; display: inline-block; margin-top: 16px;">
+                            Take the 2-Minute Survey & Join Waitlist
+                        </a>
+                        <p class="form-note">Opens in a new tab • Get early access when we launch</p>
+                    </div>
+                    
+                    <div id="successMessage" style="display: none; margin-top: 16px; color: #22c55e; font-weight: 300;">
+                        ✓ Thank you! You've been added to our waitlist. We'll notify you when we launch.
+                    </div>
+                </div>
+                
+                <div class="triangle-exchange">
+                    <h2 class="section-title">How TuneUp Works</h2>
+                    <p style="text-align: center; color: #666; margin-bottom: 2rem; font-weight: 300;">TuneUp connects organizations and musicians through verified credibility</p>
+                    
+                    <div class="triangle-container">
+                        <!-- Large triangle background -->
+                        <svg class="triangle-background" viewBox="0 0 1200 1000">
+                            <polygon points="600,100 200,800 1000,800" 
+                                     fill="none" 
+                                     stroke="#e5e5e5" 
+                                     stroke-width="2" 
+                                     stroke-dasharray="8,4"/>
+                        </svg>
+                        
+                        <!-- Organizations at top point of triangle -->
+                        <div class="node organizations">
+                            <div class="node-circle">
+                                <h3>Organizations</h3>
+                                <p>Orchestras, Schools, Studios</p>
+                            </div>
+                        </div>
+                        
+                        <!-- TuneUp in center of triangle -->
+                        <div class="center-hub">
+                            <div class="hub-circle">
+                                <div class="logo-center">TuneUp</div>
+                                <div class="hub-subtitle">Uniting Music</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Musicians at bottom points of triangle -->
+                        <div class="bottom-nodes">
+                            <div class="node musicians-left">
+                                <div class="node-circle">
+                                    <h3>Musicians</h3>
+                                    <p>Artists, Performers</p>
+                                </div>
+                            </div>
+                            
+                            <div class="node musicians-right">
+                                <div class="node-circle">
+                                    <h3>Musicians</h3>
+                                    <p>Teachers, Students</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Clean connection lines -->
+                        <svg class="connection-lines" viewBox="0 0 1200 1000">
+                            <!-- Definitions for arrow markers -->
+                            <defs>
+                                <marker id="arrowhead" markerWidth="12" markerHeight="8" 
+                                 refX="11" refY="4" orient="auto">
+                                  <polygon points="0 0, 12 4, 0 8" fill="#0a0a0a" />
+                                </marker>
+                                <marker id="arrowhead-light" markerWidth="12" markerHeight="8" 
+                                 refX="11" refY="4" orient="auto">
+                                  <polygon points="0 0, 12 4, 0 8" fill="#999" />
+                                </marker>
+                            </defs>
+                            
+                            <!-- Organizations to TuneUp -->
+                            <path d="M600 100 L600 450" stroke="#0a0a0a" stroke-width="3" 
+                                  marker-end="url(#arrowhead)" opacity="0.8"/>
+                            
+                            <!-- TuneUp to Organizations -->
+                            <path d="M600 450 L600 100" stroke="#0a0a0a" stroke-width="3" 
+                                  marker-end="url(#arrowhead)" opacity="0.8"/>
+                            
+                            <!-- TuneUp to Musicians -->
+                            <path d="M600 450 L200 800" stroke="#0a0a0a" stroke-width="3" 
+                                  marker-end="url(#arrowhead)" opacity="0.8"/>
+                            <path d="M600 450 L1000 800" stroke="#0a0a0a" stroke-width="3" 
+                                  marker-end="url(#arrowhead)" opacity="0.8"/>
+                            
+                            <!-- Musicians to TuneUp -->
+                            <path d="M200 800 L600 450" stroke="#0a0a0a" stroke-width="3" 
+                                  marker-end="url(#arrowhead)" opacity="0.8"/>
+                            <path d="M1000 800 L600 450" stroke="#0a0a0a" stroke-width="3" 
+                                  marker-end="url(#arrowhead)" opacity="0.8"/>
+                            
+                            <!-- Gray arrows connecting triangle vertices -->
+                            <!-- Top to bottom-left -->
+                            <path d="M600 100 L200 800" stroke="#999" stroke-width="3" 
+                                  marker-end="url(#arrowhead-light)" opacity="0.8"/>
+                            <path d="M200 800 L600 100" stroke="#999" stroke-width="3" 
+                                  marker-end="url(#arrowhead-light)" opacity="0.8"/>
+                            
+                            <!-- Top to bottom-right -->
+                            <path d="M600 100 L1000 800" stroke="#999" stroke-width="3" 
+                                  marker-end="url(#arrowhead-light)" opacity="0.8"/>
+                            <path d="M1000 800 L600 100" stroke="#999" stroke-width="3" 
+                                  marker-end="url(#arrowhead-light)" opacity="0.8"/>
+                            
+                            <!-- Peer connection between musicians -->
+                            <path d="M200 800 L1000 800" stroke="#999" stroke-width="3" 
+                                  marker-end="url(#arrowhead-light)" opacity="0.8"/>
+                            <path d="M1000 800 L200 800" stroke="#999" stroke-width="3" 
+                                  marker-end="url(#arrowhead-light)" opacity="0.8"/>
+                        </svg>
+                        
+                        <!-- Flow indicators positioned correctly -->
+                        <div class="flow-indicator flow-1">
+                            <span>Organizations ↔ Musicians</span>
+                        </div>
+                        <div class="flow-indicator flow-2">
+                            <span>Organizations ↔ Musicians</span>
+                        </div>
+                        <div class="flow-indicator flow-3">
+                            <span>Musicians ↔ Musicians</span>
+                        </div>
+                        
+                        <!-- Value exchange section below triangle -->
+                    </div>
+                    
+                    <div class="detailed-benefits">
+                        <div class="benefit-section musicians-section">
+                            <h3>For Musicians</h3>
+                            <ul class="detailed-list">
+                                <li>Get verified by organizations you've worked with</li>
+                                <li>Connect with other musicians</li>
+                                <li>Build credibility through real achievements</li>
+                                <li>Access opportunities based on credibility and talent (not just who you know)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="value-indicator">
+                            <div class="exchange-symbol">⇄</div>
+                            <span>Value Exchange</span>
+                        </div>
+                        
+                        <div class="benefit-section organizations-section">
+                            <h3>For Organizations</h3>
+                            <ul class="detailed-list">
+                                <li>Build searchable alumni networks</li>
+                                <li>Create talent pipelines for hiring</li>
+                                <li>Showcase successful graduates</li>
+                                <li>Gain industry positioning & insights</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="features-section">
+                    <h2 class="section-title">How TuneUp Works</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">✓</div>
+                            <h3>Organizational Verification</h3>
+                            <p>Get verified by orchestras, schools, and studios you've worked with. Build credibility through real achievements, not just social media presence.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🤝</div>
+                            <h3>Peer Verification</h3>
+                            <p>Connect with other serious musicians who can verify your collaborative work, performances, and teaching experience.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🎯</div>
+                            <h3>Credibility Scoring</h3>
+                            <p>Build a dynamic credibility score based on verified achievements, not algorithms. Open doors based on talent and proven experience.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🔍</div>
+                            <h3>Talent Discovery</h3>
+                            <p>Organizations can discover verified talent through searchable alumni networks and credibility-based recommendations.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-section">
+                    <a href="mailto:hello@tuneupmusic.com" class="contact-link">hello@tuneupmusic.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple Google Form integration - no JavaScript needed
+    </script>
+</body>
+</html>
