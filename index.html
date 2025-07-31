@@ -231,7 +231,9 @@
             font-weight: 400;
             cursor: pointer;
             transition: all 0.2s ease;
-            white-space: nowrap;
+            white-space: normal;
+            word-wrap: break-word;
+            max-width: 100%;
         }
         
         .notify-btn:hover {
@@ -678,6 +680,14 @@
             }
             
             .value-indicator {
+                order: 2;
+            }
+            
+            .musicians-section {
+                order: 1;
+            }
+            
+            .organizations-section {
                 order: 3;
             }
             
@@ -732,43 +742,49 @@
                 padding: 20px 16px;
             }
             
+            .notify-btn {
+                padding: 16px 20px;
+                font-size: 0.875rem;
+                line-height: 1.4;
+            }
+            
             .triangle-container {
-                height: 500px;
-                transform: scale(0.5);
+                height: 600px;
+                transform: scale(0.7);
             }
             
             .musicians-left {
-                transform: translateX(-50%) scale(0.5);
+                transform: translateX(-50%) scale(0.7);
             }
             
             .musicians-right {
-                transform: translateX(50%) scale(0.5);
+                transform: translateX(50%) scale(0.7);
             }
             
             .hub-circle {
-                width: 80px;
-                height: 80px;
+                width: 100px;
+                height: 100px;
             }
             
             .logo-center {
-                font-size: 0.875rem;
-            }
-            
-            .hub-subtitle {
-                font-size: 0.625rem;
-            }
-            
-            .node-circle {
-                min-width: 100px;
-                padding: 12px 16px;
-            }
-            
-            .node-circle h3 {
                 font-size: 1rem;
             }
             
+            .hub-subtitle {
+                font-size: 0.75rem;
+            }
+            
+            .node-circle {
+                min-width: 120px;
+                padding: 16px 20px;
+            }
+            
+            .node-circle h3 {
+                font-size: 1.125rem;
+            }
+            
             .node-circle p {
-                font-size: 0.875rem;
+                font-size: 1rem;
             }
         }
     </style>
