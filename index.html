@@ -467,6 +467,46 @@
             text-align: center;
         }
         
+        .benefit-box {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+        
+        .benefit-box h3 {
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        
+        .benefit-box .detailed-list {
+            list-style: none;
+            text-align: left;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        
+        .benefit-box .detailed-list li {
+            padding: 8px 0;
+            color: #e0e0e0;
+            font-weight: 300;
+            position: relative;
+            padding-left: 20px;
+            line-height: 1.5;
+        }
+        
+        .benefit-box .detailed-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: white;
+            font-weight: 600;
+        }
+        
         .benefit-section h3 {
             font-size: 1.25rem;
             font-weight: 500;
@@ -678,6 +718,20 @@
                 gap: 24px;
                 text-align: center;
                 margin-top: 40px;
+            }
+            
+            .benefit-box {
+                padding: 24px;
+                margin-bottom: 16px;
+            }
+            
+            .benefit-box h3 {
+                font-size: 1.125rem;
+            }
+            
+            .benefit-box .detailed-list li {
+                font-size: 0.875rem;
+                padding-left: 16px;
             }
             
             .value-indicator {
@@ -941,13 +995,15 @@
                     
                     <div class="detailed-benefits">
                         <div class="benefit-section musicians-section">
-                            <h3>For Musicians</h3>
-                            <ul class="detailed-list">
-                                <li>Collect endorsements from institutions you've worked with</li>
-                                <li>Get vouched for by musical colleagues and mentors</li>
-                                <li>Build portable credibility through verified relationships</li>
-                                <li>Scale word-of-mouth recommendations beyond personal networks</li>
-                            </ul>
+                            <div class="benefit-box">
+                                <h3>For Musicians</h3>
+                                <ul class="detailed-list">
+                                    <li>Collect endorsements from institutions you've worked with</li>
+                                    <li>Get vouched for by musical colleagues and mentors</li>
+                                    <li>Build portable credibility through verified relationships</li>
+                                    <li>Scale word-of-mouth recommendations beyond personal networks</li>
+                                </ul>
+                            </div>
                         </div>
                         
                         <div class="value-indicator">
@@ -956,13 +1012,15 @@
                         </div>
                         
                         <div class="benefit-section organizations-section">
-                            <h3>For Organizations</h3>
-                            <ul class="detailed-list">
-                                <li>Vouch for alumni to extend your institutional reputation</li>
-                                <li>Build endorsement networks for efficient talent discovery</li>
-                                <li>Get endorsed by musicians you've supported</li>
-                                <li>Transform inefficient hiring recommendations into searchable endorsements</li>
-                            </ul>
+                            <div class="benefit-box">
+                                <h3>For Organizations</h3>
+                                <ul class="detailed-list">
+                                    <li>Vouch for alumni to extend your institutional reputation</li>
+                                    <li>Build endorsement networks for efficient talent discovery</li>
+                                    <li>Get endorsed by musicians you've supported</li>
+                                    <li>Transform inefficient hiring recommendations into searchable endorsements</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
