@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuneUp Financial Projections</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8fafc;
+            padding: 40px;
+            color: #1a202c;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #1a202c;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .header h2 {
+            font-size: 1.3rem;
+            color: #4a5568;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #718096;
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 600px;
+            margin: 40px 0;
+            background: #fafafa;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .metric-card {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .metric-number {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 4px;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: #718096;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .insights {
+            background: #edf2f7;
+            border-left: 4px solid #4299e1;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 30px;
+        }
+
+        .insights h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .insights p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #4a5568;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+                margin: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .chart-wrapper {
+                height: 450px;
+                padding: 15px;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .metric-number {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>TuneUp Financial Projections</h1>
+            <h2>5-Year Revenue and User Growth Analysis</h2>
+        </div>
+
+        <div class="chart-wrapper">
+            <canvas id="comprehensiveChart"></canvas>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-number">$1.68M</div>
+                <div class="metric-label">Year 5 Revenue</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-number">32K</div>
+                <div class="metric-label">Total Users</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-number">8,300%</div>
+                <div class="metric-label">Growth Rate</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-number">80%</div>
+                <div class="metric-label">Subscription Rev</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-number">20:1</div>
+                <div class="metric-label">Musician Ratio</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-number">$53</div>
+                <div class="metric-label">Revenue/User</div>
+            </div>
+        </div>
+
+        <div class="insights">
+            <h3>Network Effects Drive Exponential Growth</h3>
+            <p>Revenue scales from $20K to $1.68M over the 5 year projection as network effects hasten user adoption. Each musician brings in connections, creating exponential growth with subscription revenue, which represents 80% of total revenue by Year 5.</p>
+        </div>
+    </div>
+
+    <script>
+        Chart.defaults.font.family = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+        Chart.defaults.color = '#4a5568';
+
+        const ctx = document.getElementById('comprehensiveChart').getContext('2d');
+        
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
+                datasets: [
+                    {
+                        label: 'Subscription Revenue',
+                        data: [15300, 55800, 185400, 530100, 1338300],
+                        backgroundColor: '#4299e1',
+                        borderColor: '#3182ce',
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        stack: 'revenue',
+                        order: 2
+                    },
+                    {
+                        label: 'Featured Profiles',
+                        data: [1800, 5400, 16800, 50400, 126000],
+                        backgroundColor: '#48bb78',
+                        borderColor: '#38a169',
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        stack: 'revenue',
+                        order: 2
+                    },
+                    {
+                        label: 'Advertising',
+                        data: [3000, 12000, 38000, 95000, 220000],
+                        backgroundColor: '#ed8936',
+                        borderColor: '#dd6b20',
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        stack: 'revenue',
+                        order: 2
+                    },
+                    {
+                        label: 'Total Users',
+                        data: [800, 2100, 5800, 14500, 32000],
+                        type: 'line',
+                        borderColor: '#e53e3e',
+                        backgroundColor: 'transparent',
+                        borderWidth: 4,
+                        fill: false,
+                        tension: 0,
+                        pointBackgroundColor: '#e53e3e',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 3,
+                        pointRadius: 8,
+                        pointHoverRadius: 10,
+                        yAxisID: 'y1',
+                        order: 1
+                    },
+                    {
+                        label: 'Musicians',
+                        data: [750, 1950, 5450, 13800, 30500],
+                        type: 'line',
+                        borderColor: '#805ad5',
+                        backgroundColor: 'transparent',
+                        borderWidth: 3,
+                        fill: false,
+                        tension: 0,
+                        pointBackgroundColor: '#805ad5',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 3,
+                        pointRadius: 6,
+                        yAxisID: 'y1',
+                        borderDash: [8, 4],
+                        order: 1
+                    },
+                    {
+                        label: 'Organizations',
+                        data: [50, 150, 350, 700, 1500],
+                        type: 'line',
+                        borderColor: '#38b2ac',
+                        backgroundColor: 'transparent',
+                        borderWidth: 3,
+                        fill: false,
+                        tension: 0,
+                        pointBackgroundColor: '#38b2ac',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 3,
+                        pointRadius: 6,
+                        yAxisID: 'y1',
+                        borderDash: [4, 4],
+                        order: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    title: {
+                        display: false
+                    },
+                    legend: {
+                        position: 'top',
+                        align: 'center',
+                        labels: {
+                            usePointStyle: false,
+                            padding: 20,
+                            font: {
+                                size: 12,
+                                weight: '600'
+                            },
+                            color: '#4a5568',
+                            generateLabels: function(chart) {
+                                const original = Chart.defaults.plugins.legend.labels.generateLabels;
+                                const labels = original.call(this, chart);
+                                
+                                labels.forEach(function(label) {
+                                    if (label.text === 'Total Users') {
+                                        label.pointStyle = 'line';
+                                        label.lineWidth = 4;
+                                    } else if (label.text === 'Musicians') {
+                                        label.pointStyle = 'line';
+                                        label.lineWidth = 3;
+                                        label.lineDash = [8, 4];
+                                    } else if (label.text === 'Organizations') {
+                                        label.pointStyle = 'line';
+                                        label.lineWidth = 3;
+                                        label.lineDash = [4, 4];
+                                    } else {
+                                        label.pointStyle = 'rect';
+                                    }
+                                });
+                                
+                                return labels;
+                            }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                        titleColor: '#1a202c',
+                        bodyColor: '#4a5568',
+                        borderColor: '#e2e8f0',
+                        borderWidth: 1,
+                        cornerRadius: 8,
+                        padding: 12,
+                        titleFont: {
+                            size: 13,
+                            weight: '600'
+                        },
+                        bodyFont: {
+                            size: 12
+                        },
+                        callbacks: {
+                            label: function(context) {
+                                if (context.dataset.stack === 'revenue') {
+                                    return context.dataset.label + ': $' + context.parsed.y.toLocaleString();
+                                } else {
+                                    return context.dataset.label + ': ' + context.parsed.y.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: {
+                                size: 12,
+                                weight: '600'
+                            },
+                            color: '#4a5568'
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Revenue ($)',
+                            font: {
+                                size: 13,
+                                weight: '600'
+                            },
+                            color: '#4a5568'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                if (value >= 1000000) {
+                                    return '$' + (value/1000000).toFixed(1) + 'M';
+                                } else {
+                                    return '$' + (value/1000).toFixed(0) + 'K';
+                                }
+                            },
+                            font: {
+                                size: 11
+                            },
+                            color: '#718096'
+                        },
+                        grid: {
+                            color: '#e2e8f0',
+                            lineWidth: 1
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Users',
+                            font: {
+                                size: 13,
+                                weight: '600'
+                            },
+                            color: '#4a5568'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                if (value >= 1000) {
+                                    return (value/1000).toFixed(0) + 'K';
+                                } else {
+                                    return value.toString();
+                                }
+                            },
+                            font: {
+                                size: 11
+                            },
+                            color: '#718096'
+                        },
+                        grid: {
+                            drawOnChartArea: false,
+                        },
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
